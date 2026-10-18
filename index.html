@@ -72,6 +72,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--orange);outline-off
 .contact>div{padding:4px 24px 4px 0;min-width:0}
 .contact>div+div{padding-left:24px;border-left:1px solid var(--soft)}
 .contact .k{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#8C8C8C}
+.contact .v a{text-decoration:none}
+.contact .v a:hover{color:var(--orange)}
 .contact .v{font-family:var(--display);font-weight:500;font-size:20px;margin-top:6px;overflow-wrap:anywhere}
 .copy{margin-top:10px;background:none;border:1px solid var(--encre);color:var(--encre);border-radius:999px;padding:5px 12px;font:inherit;font-size:12px;cursor:pointer}
 .copy:hover{background:var(--encre);color:var(--blanc)}
@@ -134,8 +136,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--orange);outline-off
   <section aria-labelledby="t2"><div class="wrap row bt last">
     <div class="lab"><h2 id="t2">Nous écrire</h2></div>
     <div class="body contact">
-      <div><div class="k">Facebook</div><div class="v" id="fb">[page Facebook APES]</div><button class="copy" type="button" data-copy="fb">Copier</button></div>
-      <div><div class="k">WhatsApp</div><div class="v" id="wa">[numéro]</div><button class="copy" type="button" data-copy="wa">Copier</button></div>
+      <div><div class="k">Facebook</div><div class="v"><a id="fb" href="https://www.facebook.com/p/Association-Patrimoine-pour-lEconomie-Solidaire-APES-61567504967230/" target="_blank" rel="noopener">APES sur Facebook ↗</a></div><button class="copy" type="button" data-copy="fb" data-text="https://www.facebook.com/p/Association-Patrimoine-pour-lEconomie-Solidaire-APES-61567504967230/">Copier le lien</button></div>
+      <div><div class="k">E-mail</div><div class="v"><a id="em" href="mailto:contact@apes.tn">contact@apes.tn</a></div><button class="copy" type="button" data-copy="em">Copier</button></div>
       <div><div class="k">Adresse</div><div class="v" id="ad">3 bis, rue Enée, Notre-Dame, Tunis</div><button class="copy" type="button" data-copy="ad">Copier</button></div>
     </div>
   </div></section>
@@ -174,9 +176,9 @@ function nudge(left) {
 setTimeout(() => nudge(3), 2500);
 document.querySelectorAll('.copy').forEach(b => b.addEventListener('click', () => {
   const t = document.getElementById(b.dataset.copy);
-  const reset = () => setTimeout(() => b.textContent = 'Copier', 1600);
+  const label = b.textContent, reset = () => setTimeout(() => b.textContent = label, 1600);
   const select = () => { const r = document.createRange(); r.selectNodeContents(t); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Sélectionné'; reset(); };
-  try { navigator.clipboard.writeText(t.textContent.trim()).then(() => { b.textContent = 'Copié'; reset(); }, select); } catch (e) { select(); }
+  try { navigator.clipboard.writeText(b.dataset.text || t.textContent.trim()).then(() => { b.textContent = 'Copié'; reset(); }, select); } catch (e) { select(); }
 }));
 </script>
 
