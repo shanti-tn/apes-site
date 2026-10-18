@@ -162,7 +162,7 @@ let moved = false;
 // la page descend un peu puis remonte, 3 fois, pour inviter à défiler
 function nudge(left) {
   if (!left || moved || scrollY > 4 || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const dist = Math.min(130, innerHeight * 0.15), dur = 1800, t0 = performance.now();
+  const dist = Math.min(130, innerHeight * 0.15), dur = 1500, t0 = performance.now();
   const step = now => {
     if (moved) return;
     const t = Math.min(1, (now - t0) / dur);
@@ -173,7 +173,7 @@ function nudge(left) {
   };
   requestAnimationFrame(step);
 }
-setTimeout(() => nudge(3), 2500);
+setTimeout(() => nudge(3), 1500);
 document.querySelectorAll('.copy').forEach(b => b.addEventListener('click', () => {
   const t = document.getElementById(b.dataset.copy);
   const label = b.textContent, reset = () => setTimeout(() => b.textContent = label, 1600);
