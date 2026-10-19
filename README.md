@@ -6,4 +6,4 @@ Page d'attente du futur site de l'Association Patrimoine pour l'Économie Solida
 - Lien direct possible : `https://shanti-tn.github.io/apes-site/#code=LE_CODE`.
 - Mise en ligne : GitHub Pages, branche `main`, dossier racine.
 
-À vérifier avant diffusion : relecture de la phrase en arabe.
+Phrase en arabe validée.
